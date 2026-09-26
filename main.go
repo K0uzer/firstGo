@@ -52,32 +52,87 @@ import "fmt"
 // }
 
 // func countChars(s string) map[rune]int {
-//     seen := make(map[rune]int)
+//     mapa := make(map[rune]int)
 //
-//     for _, r := range s {
-//         seen[r]++
+//     for _, el := range s {
+//         if _, ok := mapa[el]; !ok {
+//             mapa[el] = 1
+//         } else {
+//             mapa[el] += 1
+//         }
 //     }
 //
-//     return seen
+//     return mapa
 // }
 
-func hasDuplicates(nums []int) bool {
-    seen := make(map[int]struct{})
-    for _, el := range nums {
-        if _, ok := seen[el]; ok {
-            return true
-        }
-        seen[el] = struct{}{}
-    }
-    return false
-}
+// func hasDuplicates(arr []int) bool {
+//     mapa := make(map[int]struct{}, len(arr))
+//
+//     for _, el := range arr {
+//         if _, ok := mapa[el]; ok {
+//             return true
+//         }
+//         mapa[el] = struct{}{}
+//     }
+//
+//     return false
+// }
+
+// var catalog = map[string]float64 {
+//                                  	"Побег из Шоушенка": 9,
+//                                  	"Крёстный отец":     9,
+//                                  	"Тёмный рыцарь":     9,
+//                                  	"Криминальное чтиво": 9,
+//                                  	"Форрест Гамп":      9,
+//                                  }
+//
+// var film = map[string]float64 {
+//     "Форрест Гамп 2":      9.9,
+// }
+//
+// func addFilm(catalog map[string]float64, film map[string]float64 ) map[string]float64 {
+//     for title, rating := range film {
+//         catalog[title] = rating
+//     }
+//
+//     return catalog
+// }
+//
+// func topFilms(catalog map[string]float64, min float64) []string {
+//     slice := []string{}
+//
+//     for title, rating := range catalog {
+//         if rating >= min {
+//             slice = append(slice, title)
+//         }
+//     }
+//
+//     return slice
+// }
+//
+// func avgRating(catalog map[string]float64) float64 {
+//     number := 0.0
+//
+//     if len(catalog) == 0 {
+//         return 0.0
+//     }
+//
+//     for _, rating := range catalog {
+//         number += rating
+//     }
+//
+//     avgRating := number / float64(len(catalog))
+//
+//     return avgRating
+// }
 
 func main() {
+    fmt.Println()
+    fmt.Println()
+    fmt.Println()
 
-    fmt.Println(hasDuplicates([]int{1,2,3,1}))
-
-//         st := []string { "apple", "banana", "apple", "orange", "banana" }
-//         fmt.Println(removeDuplicates(st))
+//       st := []string { "apple", "banana", "apple", "orange", "banana" }
+//       fmt.Println(removeDuplicates(st))
 
 //     	fmt.Println(ticketPrice(10, true, true))   // 160
 //     	fmt.Println(ticketPrice(10, true, false))  // 60
