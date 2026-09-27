@@ -1,5 +1,9 @@
 package main
-import "fmt"
+
+import (
+    "fmt"
+)
+
 // import "time"
 
 // func ticketPrice(price int, session bool, weekend bool) int {
@@ -199,32 +203,184 @@ import "fmt"
 // fmt.Printf("%.2f ГБ", totalGigoBite)
 
 
-func ticketPrice(price float64, isEvening bool, isDayOff bool) float64 {
-    if isEvening && isDayOff {
-       return price + 150.0
-    }
-    if isDayOff {
-        return price + 100.0
-    }
-    if isEvening {
-        return price + 50.0
-    }
-    return price
-}
+// func ticketPrice(price float64, isEvening bool, isDayOff bool) float64 {
+//     if isEvening && isDayOff {
+//        return price + 150.0
+//     }
+//     if isDayOff {
+//         return price + 100.0
+//     }
+//     if isEvening {
+//         return price + 50.0
+//     }
+//     return price
+// }
+//
+// func formatReceipt(title string, countTickets int, priceForTicket float64) (string, float64) {
+//     totalPrice := float64(countTickets) * priceForTicket
+//     return title, totalPrice
+// }
+//
+// func isAllower(age int, rateFilm int) bool {
+//     if age > rateFilm {
+//         return true
+//     }
+//     return false
+// }
 
-func formatReceipt(title string, countTickets int, priceForTicket float64) (string, float64) {
-    totalPrice := float64(countTickets) * priceForTicket
-    return title, totalPrice
-}
+// func checkAccess(age int, subscription string, isBlock bool, rateFilm int) (string, error) {
+//     if isBlock {
+//         return "Аккаунт забанен", nil
+//     }
+//     if age < rateFilm {
+//         return "Возроствной рейтинг не подходит", nil
+//     }
+//     typeSubscription := map[string]string {
+//         "free": "Доступно с рекламой",
+//         "premium": "Приятного просмотра",
+//     }
+//     if _, ok := typeSubscription[subscription]; ok {
+//         return typeSubscription[subscription], nil
+//     } else {
+//         return "", errors.New("Ошибка")
+//     }
+// }
+//
+// res1, _ := checkAccess(18, "premium", false, 18)
+// fmt.Println(res1)
+// res2, _ := checkAccess(15, "free", false, 18)
+// fmt.Println(res2)
+// res3, _ := checkAccess(20, "free", false, 18)
+// fmt.Println(res3)
 
-func isAllower(age int, rateFilm int) bool {
-    if age > rateFilm {
-        return true
-    }
-    return false
+// var films = []string {
+//     "Гаррик Поттер",
+//     "Хакеры",
+//     "Начало",
+//     "Выжить любой ценой",
+// }
+// var sessions = []string {
+//     "10:00",
+//     "13:00",
+//     "16:00",
+//     "19:00",
+// }
+// const quantityHal = 3
+
+// func generateSchedule(films []string, sessions []string, quantityHal int) {
+//     currentSearchFilm := "Начало"
+//
+//     mapa := map[string]string {}
+//
+//     for index := 0; index < quantityHal; index++ {
+//         fmt.Printf("Зал %d:\n", index + 1)
+//         for filmIndex, film := range films {
+//             currentIndex := (filmIndex + index) % len(sessions)
+//             fmt.Printf("%s - %s\n", sessions[currentIndex], film)
+//         }
+//     }
+//
+// for index := 0; index < quantityHal; index++ {
+//         fmt.Printf("Зал %d:\n", index + 1)
+//         for filmIndex, film := range films {
+//             currentIndex := (filmIndex + index) % len(sessions)
+//             if currentSearchFilm == film {
+//                 fmt.Printf("%s - %s\n", sessions[currentIndex], film)
+//                 break
+//             }
+//         }
+//     }
+//
+//     for _, film := range films {
+//         count := 0
+//         for _, char := range film {
+//             if string(char) != " " {
+//                 count++
+//             }
+//         }
+//         fmt.Printf("Название фильма: %s -- %d\n", film, count)
+//     }
+//
+// }
+
+// var commands =  []string{ "play", "pause", "stop", "next", "prev", "volume_up", "volume_down", "info", "like", "quit", "share" }
+
+// func player() {
+//     for _, command := range commands {
+//         switch command {
+//             case "play":
+//                 fmt.Println("Вы включили плеер")
+//             case "pause":
+//                 fmt.Println("Вы поставили на паузу плеер")
+//             case "stop":
+//                 fmt.Println("Стоп")
+//             case "next":
+//                 fmt.Println("Далее")
+//             case "prev":
+//                 fmt.Println("Предыдущий")
+//             case "volume_up":
+//                 fmt.Println("Увеличение громкости")
+//             case "volume_down":
+//                 fmt.Println("Понизить громкость")
+//             case "like":
+//                 fmt.Println("Лайк")
+//             case "quit":
+//                 fmt.Println("Выход")
+//             case "share":
+//                 fmt.Println("Поделиться")
+//             default:
+//                 fmt.Println("Нет такой команды")
+//         }
+//
+//         switch {
+//             case command == "info":
+//                 fmt.Println("Информация")
+//         }
+//     }
+// }
+
+// func player2(com string) {
+//         switch com {
+//             case "play":
+//                 fmt.Println("Вы включили плеер")
+//                 fallthrough
+//             case "pause":
+//                 fmt.Println("Вы поставили на паузу плеер")
+//             case "stop":
+//                 fmt.Println("Стоп")
+//             case "next":
+//                 fmt.Println("Далее")
+//             case "prev":
+//                 fmt.Println("Предыдущий")
+//             case "volume_up":
+//                 fmt.Println("Увеличение громкости")
+//             case "volume_down":
+//                 fmt.Println("Понизить громкость")
+//             case "like":
+//                 fmt.Println("Лайк")
+//             case "quit":
+//                 fmt.Println("quit")
+//             case "share":
+//                 fmt.Println("Поделиться")
+//             default:
+//                 fmt.Println("Нет такой команды")
+//         }
+// }
+
+func typeSwitch(command interface{}) {
+        switch value := command.(type) {
+            case int:
+                fmt.Printf("Тип: %T", value)
+        }
 }
 
 func main() {
+
+// player()
+// player2("play")
+typeSwitch(24)
+
+}
 //     fmt.Println(validationSubscription())
 //     fmt.Println(validationSubscription())
 //     fmt.Println(validationSubscription())
@@ -239,13 +395,14 @@ func main() {
 // fmt.Println(isAllower(0, 0))     // false
 // fmt.Println(isAllower(100, 18))  // true
 
-fmt.Println(ticketPrice(100, true, true))
-fmt.Println(ticketPrice(100, false, false))
-fmt.Println(ticketPrice(100, false, true))
-fmt.Println(ticketPrice(100, true, false))
+// fmt.Println(ticketPrice(100, true, true))
+// fmt.Println(ticketPrice(100, false, false))
+// fmt.Println(ticketPrice(100, false, true))
+// fmt.Println(ticketPrice(100, true, false))
 
 
-}
+
+// generateSchedule(films, sessions, quantityHal)
 
 
 //       st := []string { "apple", "banana", "apple", "orange", "banana" }
