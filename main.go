@@ -1,5 +1,6 @@
 package main
 import "fmt"
+// import "time"
 
 // func ticketPrice(price int, session bool, weekend bool) int {
 //     if weekend == true && session == true {
@@ -126,10 +127,126 @@ import "fmt"
 //     return avgRating
 // }
 
+//     var time = 169
+//     var rate = 8.6
+//     var rej = "Кростофер Нолан"
+//
+//     fmt.Print("Фильм: ", "Интерстеллар\n")
+//     fmt.Print("Интерстеллар\n")
+//     fmt.Println("Фантастика, 2014", "Фантастика, 2014")
+//     fmt.Printf("Рейтинг: %.1f | %d мин |\nРежиссер: %s", rate, time, rej)
+
+// __________________________ ошибки __________________________
+
+// type User struct {
+// 	Name  string
+// 	Email string
+// 	Age   int
+// }
+//
+// type TypeValidationError = [string]string
+//
+// var usersCatalog = map[int]User{
+// 	1: {Name: "Аня", Email: "anya@mail.com", Age: 25},
+// 	2: {Name: "Борис", Email: "boris@mail.com", Age: 30},
+// 	3: {Name: "Вика", Email: "vika@mail.com", Age: 28},
+// }
+//
+// var ErrorUserNotFound = errors.New("Пользователь не найден")
+// var ValidationError = TypeValidationError {
+//     Field: ""
+//     Value: ""
+// }
+//
+// func validationSubscription(id int, date string, usersCatalog map[int]User) {
+//     if _, ok := usersCatalog[id]; !ok   {
+//         return ErrorUserNotFound
+//     }
+//
+//     dateMask := "2006-01-02"
+//
+//     if !time.Parse(dateMask, date) {
+//         return ValidationError
+//     }
+// }
+
+// const (
+//     rate = "Premium",
+//     price = 999.00
+// )
+// var months int = 12
+// var discount = 15.0
+// total := (price * float64(months)) * (1 - (discount / 100))
+//
+// fmt.Println("---------- ЧЕК GoFlix -----------")
+// fmt.Printf("Тариф: %s\nМесяцев: %d\nБазовая цена: %.2f руб/мес\nСкидка: %.0f%%\nИтого: %.2f руб.", tariff, months, price, discount, total)
+
+
+
+// var totalSec = 8520
+//
+// var hours = totalSec / (60 * 60)
+// var minutes = (totalSec / 60) % 60
+// var seconds = totalSec % 60
+//
+// fmt.Printf("%d ч %d мин %d сек", hours, minutes, seconds)
+
+
+
+// totalBite := 4_831_838_208
+// totalGigoBite := float64(totalBite / 1024) / 1024 / 1024
+//
+// fmt.Printf("%.2f ГБ", totalGigoBite)
+
+
+func ticketPrice(price float64, isEvening bool, isDayOff bool) float64 {
+    if isEvening && isDayOff {
+       return price + 150.0
+    }
+    if isDayOff {
+        return price + 100.0
+    }
+    if isEvening {
+        return price + 50.0
+    }
+    return price
+}
+
+func formatReceipt(title string, countTickets int, priceForTicket float64) (string, float64) {
+    totalPrice := float64(countTickets) * priceForTicket
+    return title, totalPrice
+}
+
+func isAllower(age int, rateFilm int) bool {
+    if age > rateFilm {
+        return true
+    }
+    return false
+}
+
 func main() {
-    fmt.Println()
-    fmt.Println()
-    fmt.Println()
+//     fmt.Println(validationSubscription())
+//     fmt.Println(validationSubscription())
+//     fmt.Println(validationSubscription())
+//
+// fmt.Println(formatReceipt("Гарри потер", 5, 1002.5))
+// fmt.Println(formatReceipt("Вперед!", 2, 150.0))
+// fmt.Println(formatReceipt("Хакеры", 9, 40.5))
+//
+// fmt.Println(isAllower(18, 18))   // false — ровно 18 НЕ проходит (возраст > рейтинг)
+// fmt.Println(isAllower(19, 18))   // true
+// fmt.Println(isAllower(17, 18))   // false
+// fmt.Println(isAllower(0, 0))     // false
+// fmt.Println(isAllower(100, 18))  // true
+
+fmt.Println(ticketPrice(100, true, true))
+fmt.Println(ticketPrice(100, false, false))
+fmt.Println(ticketPrice(100, false, true))
+fmt.Println(ticketPrice(100, true, false))
+
+
+}
+
 
 //       st := []string { "apple", "banana", "apple", "orange", "banana" }
 //       fmt.Println(removeDuplicates(st))
@@ -158,5 +275,3 @@ func main() {
 //     for _, r := range titleFilms {
 //        fmt.Println([]rune(r))
 //     }
-
-}
