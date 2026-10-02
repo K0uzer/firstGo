@@ -142,45 +142,45 @@ import (
 
 // __________________________ ошибки __________________________
 
-// type User struct {
-// 	Name  string
-// 	Email string
-// 	Age   int
-// }
-//
-// type TypeValidationError = [string]string
-//
-// var usersCatalog = map[int]User{
-// 	1: {Name: "Аня", Email: "anya@mail.com", Age: 25},
-// 	2: {Name: "Борис", Email: "boris@mail.com", Age: 30},
-// 	3: {Name: "Вика", Email: "vika@mail.com", Age: 28},
-// }
-//
-// var ErrorUserNotFound = errors.New("Пользователь не найден")
-// var ValidationError = TypeValidationError {
-//     Field: ""
-//     Value: ""
-// }
-//
-// func validationSubscription(id int, date string, usersCatalog map[int]User) {
-//     if _, ok := usersCatalog[id]; !ok   {
-//         return ErrorUserNotFound
-//     }
-//
-//     dateMask := "2006-01-02"
-//
-//     if !time.Parse(dateMask, date) {
-//         return ValidationError
-//     }
-// }
+type User struct {
+	Name  string
+	Email string
+	Age   int
+}
 
-// const (
-//     rate = "Premium",
-//     price = 999.00
-// )
-// var months int = 12
-// var discount = 15.0
-// total := (price * float64(months)) * (1 - (discount / 100))
+type TypeValidationError = [string]string
+
+var usersCatalog = map[int]User{
+	1: {Name: "Аня", Email: "anya@mail.com", Age: 25},
+	2: {Name: "Борис", Email: "boris@mail.com", Age: 30},
+	3: {Name: "Вика", Email: "vika@mail.com", Age: 28},
+}
+
+var ErrorUserNotFound = errors.New("Пользователь не найден")
+var ValidationError = TypeValidationError {
+    Field: ""
+    Value: ""
+}
+
+func validationSubscription(id int, date string, usersCatalog map[int]User) {
+    if _, ok := usersCatalog[id]; !ok   {
+        return ErrorUserNotFound
+    }
+
+    dateMask := "2006-01-02"
+
+    if !time.Parse(dateMask, date) {
+        return ValidationError
+    }
+}
+
+const (
+    rate = "Premium",
+    price = 999.00
+)
+var months int = 12
+var discount = 15.0
+total := (price * float64(months)) * (1 - (discount / 100))
 //
 // fmt.Println("---------- ЧЕК GoFlix -----------")
 // fmt.Printf("Тариф: %s\nМесяцев: %d\nБазовая цена: %.2f руб/мес\nСкидка: %.0f%%\nИтого: %.2f руб.", tariff, months, price, discount, total)
@@ -367,20 +367,144 @@ import (
 //         }
 // }
 
-func typeSwitch(command interface{}) {
-        switch value := command.(type) {
-            case int:
-                fmt.Printf("Тип: %T", value)
+// func typeSwitch(command interface{}) {
+//         switch value := command.(type) {
+//             case int:
+//                 fmt.Printf("Тип: %T", value)
+//         }
+// }
+
+
+
+// func sum(nums []int) int {
+//     fmt.Println(nums)
+//     if len(nums) == 0 {
+//         return 0
+//     }
+//
+//     sum := 0
+//
+//     for _, num := range nums {
+//         sum += num
+//     }
+//
+//     return sum
+// }
+
+// func removeDuplicates(s []string) []string {
+//     if len(s) == 0 || len(s) == 1 {
+//         return s
+//     }
+//
+//     result := []string{s[0]}
+//
+//     for _, elem := range s {
+//         isUnique := true
+//
+//         for indexResult, uniqueElem := range result {
+//             if elem == uniqueElem {
+//                 isUnique = false
+//             }
+//
+//             if isUnique == true && len(result) == indexResult + 1 {
+//                 result = append(result, elem)
+//             }
+//         }
+//     }
+//
+//     return result
+// }
+
+// func filterByRating(rating []float64, min float64) []float64 {
+//     result := make([]float64, 0, len(rating))
+//
+//     for _, elem := range rating {
+//         if elem >= min {
+//             result = append(result, elem)
+//         }
+//     }
+//
+//     return result
+// }
+
+// func countChars(str string) map[rune]int {
+//     mapa := make(map[rune]int, len(str))
+//
+//     for _, char := range str {
+//         if _, ok := mapa[char]; !ok {
+//             mapa[char] = 1
+//         } else {
+//             mapa[char] += 1
+//         }
+//     }
+//
+//     for key, elem := range mapa {
+//         fmt.Printf("map['%c']: %d\n", key, elem)
+//     }
+//
+//     return mapa
+// }
+
+// func hasDuplicates(nums []int) bool {
+//     mapa := make(map[int]struct{}, len(nums))
+//
+//     for _, elem := range nums {
+//         if _, ok := mapa[elem]; ok {
+//             return true
+//         }
+//         mapa[elem] = struct{}{}
+//     }
+//
+//     return false
+// }
+
+var catalog = map[string]float64 {
+        "Matrix": 9.2,
+        "Inception": 8.8,
+        "Star Wars": 9.0,
+    }
+//
+// func addFilm(catalog map[string]float64, title string, rating float64) map[string]float64 {
+//     if _, ok := catalog[title]; !ok {
+//        catalog[title] = rating
+//     }
+//     return catalog
+// }
+//
+// func changeRating() {
+//     if _, ok := catalog[title]; ok {
+//        catalog[title] = rating
+//     }
+//     return catalog
+// }
+
+func topFilms(catalog map[string]float64) string {
+    titleFilm := ""
+    for key, elem := range catalog {
+        if titleFilm == "" {
+            titleFilm = key
+            continue
         }
+        if catalog[titleFilm] < elem {
+            titleFilm = key
+        }
+    }
+
+    return titleFilm
 }
+
+
+// func avgRating()catalog map[string]float64 {
+//
+// }
 
 func main() {
 
-// player()
-// player2("play")
-typeSwitch(24)
+    fmt.Println(topFilms(catalog))
 
 }
+
+
 //     fmt.Println(validationSubscription())
 //     fmt.Println(validationSubscription())
 //     fmt.Println(validationSubscription())
